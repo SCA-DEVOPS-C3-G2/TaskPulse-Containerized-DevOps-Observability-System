@@ -3,7 +3,12 @@
 Run the following command to clone the repository
 
 ```
-git clone https://github.com/alokyadav1/mern-todo-app.git
+USING SSH
+git clone git@github.com:SCA-DEVOPS-C3-G2/TaskPulse-Containerized-DevOps-Observability-System.git
+
+USING HTTP
+
+git clone https://github.com/SCA-DEVOPS-C3-G2/TaskPulse-Containerized-DevOps-Observability-System.git
 ```
 
 Go to `frontend` and `backend` directory to install packages

@@ -6,10 +6,12 @@ import dotenv from "dotenv";
 import userRouter from "./routes/userRoute.js";
 import taskRouter from "./routes/taskRoute.js";
 import forgotPasswordRouter from "./routes/forgotPassword.js";
-
+import promBundle from "express-prom-bundle";
 //app config
 dotenv.config();
 const app = express();
+const metricsMiddleware = promBundle({includeMethod: true, includePath: true});
+app.use(metricsMiddleware);
 const port = process.env.PORT || 8001;
 mongoose.set("strictQuery", true);
 

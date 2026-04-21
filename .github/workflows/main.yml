@@ -1,0 +1,49 @@
+name: TaskPulse CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    # Backend
+    - name: Install backend dependencies
+      run: |
+        cd backend
+        npm install
+
+    # Frontend
+    - name: Install frontend dependencies
+      run: |
+        cd frontend
+        npm install
+
+    # Build frontend (React)
+    - name: Build frontend
+      run: |
+        cd frontend
+        npm run build
+
+    # Docker build
+    - name: Build Docker containers
+      run: docker compose build
+
+    # Run containers for testing
+    - name: Run containers
+      run: docker compose up -d
+
+    - name: Stop containers
+      run: docker compose down

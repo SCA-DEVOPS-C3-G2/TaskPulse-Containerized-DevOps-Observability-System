@@ -12,7 +12,7 @@ function CreateTask() {
     // const [toast, setToast] = useState();
     const handleAdd = async (e) => {
         e.preventDefault();
-        try {
+        try { //eslint-disable-next-line
             const res = await axios.post("/task/addTask", {title, description},{
               headers: {
                 Authorization: `Bearer ${userToken}`

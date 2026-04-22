@@ -35,6 +35,14 @@ mongoose.connect(
 );
 console.log(process.env.MONGO_URI);
 
+// health check route (ADD THIS)
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    message: 'Server is running'
+  });
+});
+
 //api endpoints
 app.use("/api/user", userRouter);
 app.use("/api/task", taskRouter);

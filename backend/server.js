@@ -41,6 +41,6 @@ app.use("/api/task", taskRouter);
 app.use("/api/forgotPassword", forgotPasswordRouter);
 
 //listen
-app.listen(port, "0.0.0.0", () =>
-  console.log(`Server running on http://localhost:${port}`)
-);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server running on port ${port}`);
+});

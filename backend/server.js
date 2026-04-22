@@ -19,6 +19,14 @@ mongoose.set("strictQuery", true);
 app.use(express.json());
 app.use(cors());
 
+// health check route (ADD THIS)
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    message: 'Server is running'
+  });
+});
+
 //db config
 mongoose.connect(
   process.env.MONGO_URI,

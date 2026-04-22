@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+console.log("🔥 BACKEND SERVER FROM DOCKER IS RUNNING");
+
 import userRouter from "./routes/userRoute.js";
 import taskRouter from "./routes/taskRoute.js";
 import forgotPasswordRouter from "./routes/forgotPassword.js";
@@ -43,18 +45,16 @@ mongoose.connect(
 );
 console.log(process.env.MONGO_URI);
 
-// health check route (ADD THIS)
-app.get('/api/health', (req, res) => {
-  res.status(200).json({
-    status: 'OK',
-    message: 'Server is running'
-  });
-});
 
 //api endpoints
 app.use("/api/user", userRouter);
 app.use("/api/task", taskRouter);
 app.use("/api/forgotPassword", forgotPasswordRouter);
+
+// 👇 ADD THIS HERE
+app.get('/', (req, res) => {
+  res.status(200).send('Backend is running 🚀');
+});
 
 //listen
 app.listen(port, "0.0.0.0", () => {
